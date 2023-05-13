@@ -1,0 +1,1 @@
+//Automating checkout process 
