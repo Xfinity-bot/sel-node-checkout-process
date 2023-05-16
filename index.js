@@ -10,11 +10,8 @@ function sleep(ms) {
   let driver = await new Builder().forBrowser(Browser.CHROME).build();
   try {
     await driver.get("https://ecommerce.tealiumdemo.com/");
-    // await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-    // await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
     await driver.findElement(By.className("skip-link  skip-account")).click();
     await sleep(4000);
-    // await driver.findElement(By.css('a[href="https://ecommerce.tealiumdemo.com/customer/account/create/"]'))
     await driver
       .findElement(By.css("#header-account > div > ul > li:nth-child(5)"))
       .click();
@@ -37,8 +34,15 @@ function sleep(ms) {
     await driver
       .findElement(By.css("#form-validate > div.buttons-set > button"))
       .click();
-    // await driver.findElement(By.css('#form-validate > div.fieldset > ul > li:nth-child(3) > div:nth-child(2)')).sendKeys('Krishna1!');
+    await sleep(1500);
+    await driver.findElement(By.css("#header > div > a")).click();
+    await sleep(1500);
+    await driver.findElement(By.id("search")).sendKeys("CHELSEA TEE");
+    await driver
+      .findElement(By.className("search-button"))
+      .sendKeys("CHELSEA TEE");
   } finally {
-    //await driver.quit();
+    await sleep(3500);
+    await driver.quit();
   }
 })();
