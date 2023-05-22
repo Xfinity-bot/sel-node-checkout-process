@@ -1,8 +1,11 @@
 {
-  "scripts":{
-    "dev": "node index.js"
+  "scripts": {
+    "dev": "node index.js",
+    "postinstall": "npm update browserstack-node-sdk",
+    "dev-browserstack": "browserstack-node-sdk node index.js"
   },
   "dependencies": {
+    "browserstack-node-sdk": "^1.15.1",
     "chromedriver": "^113.0.0",
     "selenium-webdriver": "^4.9.2"
   }
