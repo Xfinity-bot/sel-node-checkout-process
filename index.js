@@ -1,4 +1,4 @@
-//Automating checkout process
+
 const { Builder, Browser, By, Key, until } = require("selenium-webdriver");
 function sleep(ms) {
   return new Promise((resolve) => {
@@ -9,13 +9,17 @@ function sleep(ms) {
   9;
   let driver = await new Builder().forBrowser(Browser.CHROME).build();
   try {
+    // get the website
     await driver.get("https://ecommerce.tealiumdemo.com/");
+
+    //Registering process
     await driver.findElement(By.className("skip-link  skip-account")).click();
     await sleep(4000);
     await driver
       .findElement(By.css("#header-account > div > ul > li:nth-child(5)"))
       .click();
     await sleep(2000);
+    // Filling out accout information
     await driver.findElement(By.id("firstname")).sendKeys("Xfinity");
     await driver.findElement(By.id("lastname")).sendKeys("Z");
     await driver
@@ -35,6 +39,8 @@ function sleep(ms) {
       .findElement(By.css("#form-validate > div.buttons-set > button"))
       .click();
     await sleep(1500);
+
+    // Search Feature 
     await driver.findElement(By.css("#header > div > a")).click();
     await sleep(1500);
     await driver.findElement(By.id("search")).sendKeys("CHELSEA TEE");
